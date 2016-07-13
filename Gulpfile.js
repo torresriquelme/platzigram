@@ -19,6 +19,7 @@ function compile(watch){
 
 	function rebundle(){
 		bundle.transform(babel).bundle().pipe(source('index.js')).pipe(rename('app.js')).pipe(gulp.dest('public'));
+		console.log('Running rebundle function');
 	}
 
 	if(watch){

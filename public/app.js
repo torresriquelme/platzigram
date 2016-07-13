@@ -2363,19 +2363,40 @@ module.exports = [
 
 },{}],16:[function(require,module,exports){
 var page = require('page');
-var yo = require('yo-yo');
-var empty = require('empty-element');
-
-var main = document.getElementById('main-container');
 
 //Define la ruta de la direccion raiz de la pagina
 page('/', function (ctx, next) {
-	main.innerHTML = 'Signup......<a href="/signup">Signup</a>';
+	var main = document.getElementById('main-container');
+	main.innerHTML = 'Home (En su propia carpeta)<a href="/signup">Signup.....</a>';
 });
+
+},{"page":11}],17:[function(require,module,exports){
+var page = require('page');
+
+require('./homepage');
+require('./signup');
+
+//Con este comando se pone a correr PageJS. Es requerido.....
+page();
+
+},{"./homepage":16,"./signup":18,"page":11}],18:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
 
 //Define la ruta /signup de la pagina
 page('/signup', function (ctx, next) {
-	var el = yo`<div class="container">
+	var main = document.getElementById('main-container');
+	empty(main);
+	main.innerHTML = 'Signup (En su propia carpeta) <a href="/">Vamonos pa Home puej</a>';
+
+	main.appendChild(template);
+});
+
+},{"./template":19,"empty-element":3,"page":11}],19:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = yo`<div class="container">
 			<div class="row">
 				<div class="col s10 push-s1">
 					<div class="row">
@@ -2413,10 +2434,5 @@ page('/signup', function (ctx, next) {
 				</div>
 			</div>
 		</div>`;
-	empty(main).appendChild(el);
-});
 
-//Con este comando se pone a correr PageJS. Es requerido.
-page();
-
-},{"empty-element":3,"page":11,"yo-yo":14}]},{},[16]);
+},{"yo-yo":14}]},{},[17]);
