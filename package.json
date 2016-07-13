@@ -1,0 +1,37 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "aplicacion con propositos de estudio. Curso de Platzi",
+  "main": "server.js",
+  "scripts": {
+    "build": "gulp",
+    "watchi": "gulp watch",
+    "servi": "node server.js",
+    "dev": "start npm run watchi && start npm run servi"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "frontend"
+  ],
+  "author": "torresriquelme platzi",
+  "license": "ISC",
+  "dependencies": {
+    "empty-element": "^1.0.0",
+    "express": "^4.14.0",
+    "materialize-css": "^0.97.6",
+    "page": "^1.7.1",
+    "pug": "^2.0.0-beta3",
+    "yo-yo": "^1.2.2"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "concurrently": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}
