@@ -7,5 +7,25 @@ var title = require('title');
 page('/', function(ctx, next){
 	title('Platzigram');
 	var main = document.getElementById('main-container');
-	empty(main).appendChild(template);
+	var pictures = [
+		{
+			user: {
+				username: 'torresriquelme',
+				avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAiRAAAAJGJiNTQ0ZTJlLWZjOTItNDBhZC1hZjEyLTJlZDY2YmIxOTdmMg.jpg'
+			},
+			url: 'office.jpg',
+			likes: 10,
+			liked: true
+		},
+		{
+			user: {
+				username: 'torresriquelme',
+				avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAiRAAAAJGJiNTQ0ZTJlLWZjOTItNDBhZC1hZjEyLTJlZDY2YmIxOTdmMg.jpg'
+			},
+			url: 'office.jpg',
+			likes: 4,
+			liked: true
+		}
+	];
+	empty(main).appendChild(template(pictures));
 });
