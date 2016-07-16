@@ -2375,11 +2375,72 @@ var page = require('page');
 
 require('./homepage');
 require('./signup');
+require('./signin');
 
 //Con este comando se pone a correr PageJS. Es requerido.....
 page();
 
-},{"./homepage":16,"./signup":18,"page":11}],18:[function(require,module,exports){
+},{"./homepage":16,"./signin":19,"./signup":21,"page":11}],18:[function(require,module,exports){
+var yo = require('yo-yo');
+
+module.exports = function landing(box) {
+	return yo`<div class="container">
+			<div class="row">
+				<div class="col s10 push-s1">
+					<div class="row">
+						<div class="col m5 hide-on-small-only">
+							<img class="iphone" src="iphone.png">
+						</div>
+						${ box }
+					</div>
+				</div>
+			</div>
+		</div>`;
+};
+
+},{"yo-yo":14}],19:[function(require,module,exports){
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+
+//Define la ruta /signup de la pagina
+page('/signin', function (ctx, next) {
+	var main = document.getElementById('main-container');
+	empty(main).appendChild(template);
+});
+
+},{"./template":20,"empty-element":3,"page":11}],20:[function(require,module,exports){
+var yo = require('yo-yo');
+var landing = require('../landing');
+
+var signinForm = yo`<div class="col s12 m7">
+							<div class="row">
+								<div class="signup-box">
+									<h1 class="platzigram">Chimbogram</h1>
+									<form class="signup-form">
+										<div class="section">
+											<a class="btn btn-fb hiden-on-small-only">Iniciar sesión con Facebook</a>
+											<a class="btn btn-fb hide-on-med-and-up">Iniciar sesión</a>
+										</div>
+										<div class="divider"></div>
+										<div class="section">
+											<input type="text" name="username" placeholder="Nombre de usuario"/>
+											<input type="password" name="password" placeholder="Contraseña"/>
+											<button class="btn waves-effect waves-light btn-signup" type="submit">Inicia Sesion</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="row">
+								<div class="login-box">
+									¿No tienes cuenta? <a href="/signup">Registrate</a>
+								</div>
+							</div>
+						</div>`;
+
+module.exports = landing(signinForm);
+
+},{"../landing":18,"yo-yo":14}],21:[function(require,module,exports){
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
@@ -2393,17 +2454,11 @@ page('/signup', function (ctx, next) {
 	main.appendChild(template);
 });
 
-},{"./template":19,"empty-element":3,"page":11}],19:[function(require,module,exports){
+},{"./template":22,"empty-element":3,"page":11}],22:[function(require,module,exports){
 var yo = require('yo-yo');
+var landing = require('../landing');
 
-module.exports = yo`<div class="container">
-			<div class="row">
-				<div class="col s10 push-s1">
-					<div class="row">
-						<div class="col m5 hide-on-small-only">
-							<img class="iphone" src="iphone.png">
-						</div>
-						<div class="col s12 m7">
+var signupForm = yo`<div class="col s12 m7">
 							<div class="row">
 								<div class="signup-box">
 									<h1 class="platzigram">Chimbogram</h1>
@@ -2429,10 +2484,8 @@ module.exports = yo`<div class="container">
 									¿Ya tienes cuenta? <a href="/signin">Entrar</a>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>`;
+						</div>`;
 
-},{"yo-yo":14}]},{},[17]);
+module.exports = landing(signupForm);
+
+},{"../landing":18,"yo-yo":14}]},{},[17]);
