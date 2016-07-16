@@ -4,7 +4,7 @@ var landing = require('../landing');
 var signinForm = yo`<div class="col s12 m7">
 							<div class="row">
 								<div class="signup-box">
-									<h1 class="platzigram">Chimbogram</h1>
+									<h1 class="platzigram">Platzigram</h1>
 									<form class="signup-form">
 										<div class="section">
 											<a class="btn btn-fb hiden-on-small-only">Iniciar sesión con Facebook</a>

@@ -4,7 +4,7 @@ var landing = require('../landing');
 var signupForm = yo`<div class="col s12 m7">
 							<div class="row">
 								<div class="signup-box">
-									<h1 class="platzigram">Chimbogram</h1>
+									<h1 class="platzigram">Platzigram</h1>
 									<form class="signup-form">
 										<h2>Regístrate para ver fotos de tus amigos estudiando en Platzi</h2>
 										<div class="section">
