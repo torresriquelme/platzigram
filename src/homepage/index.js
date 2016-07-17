@@ -10,11 +10,11 @@ page('/', function(ctx, next){
 	var pictures = [
 		{
 			user: {
-				username: 'torresriquelme',
+				username: 'torres--riquelme',
 				avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAiRAAAAJGJiNTQ0ZTJlLWZjOTItNDBhZC1hZjEyLTJlZDY2YmIxOTdmMg.jpg'
 			},
 			url: 'office.jpg',
-			likes: 10,
+			likes: 0,
 			liked: false,
 			createdAt: new Date()
 		},
@@ -24,7 +24,7 @@ page('/', function(ctx, next){
 				avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAiRAAAAJGJiNTQ0ZTJlLWZjOTItNDBhZC1hZjEyLTJlZDY2YmIxOTdmMg.jpg'
 			},
 			url: 'office.jpg',
-			likes: 4,
+			likes: 1,
 			liked: false,
 			createdAt: new Date().setDate(new Date().getDate() - 10)
 		}

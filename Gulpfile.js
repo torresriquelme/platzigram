@@ -18,7 +18,7 @@ function compile(watch){
 	var bundle = watchify(browserify('./src/index.js'));
 
 	function rebundle(){
-		bundle.transform(babel).bundle().pipe(source('index.js')).pipe(rename('app.js')).pipe(gulp.dest('public'));
+		bundle.transform(babel).bundle().on('error', function (err) { console.log(err); this.emit('end') }).pipe(source('index.js')).pipe(rename('app.js')).pipe(gulp.dest('public'));
 		console.log('Running rebundle function');
 	}
 
