@@ -4,9 +4,10 @@ var template = require('./template');
 var title = require('title');
 var request = require('superagent');
 var header = require('../header');
+var axios = require('axios');
 
 //Define la ruta /signup de la pagina
-page('/', header, loadPictures, function(ctx, next){
+page('/', header, loadPicturesAxios, function(ctx, next){
 	title('Platzigram');
 	var main = document.getElementById('main-container');
 	
@@ -19,6 +20,20 @@ function loadPictures(ctx, next){
 		.end(function(err, res){
 			if(err) return console.log(err);
 			ctx.pictures = res.body;
+			console.log('Callback con superagent');
 			next();
+		})
+}
+
+function loadPicturesAxios(ctx, next){
+	axios
+		.get('/api/pictures')
+		.then(function(res){
+			ctx.pictures = res.data;
+			console.log('Callback con Axios');
+			next();
+		})
+		.catch(function(err){
+			console.log(err);
 		})
 }
