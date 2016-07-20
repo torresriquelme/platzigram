@@ -7,13 +7,16 @@ var header = require('../header');
 var axios = require('axios');
 
 //Define la ruta /signup de la pagina
-page('/', header, loadPicturesAxios, function(ctx, next){
+page('/', header, loadPicturesFetch, function(ctx, next){
 	title('Platzigram');
 	var main = document.getElementById('main-container');
 	
 	empty(main).appendChild(template(ctx.pictures));
 });
 
+
+//Esta funcion carga las pictures con superagent. Es similar al resto 
+//pero con otra libreria.
 function loadPictures(ctx, next){
 	request
 		.get('/api/pictures')
@@ -25,6 +28,7 @@ function loadPictures(ctx, next){
 		})
 }
 
+//La misma funcion pero con la libreria axios
 function loadPicturesAxios(ctx, next){
 	axios
 		.get('/api/pictures')
@@ -34,6 +38,21 @@ function loadPicturesAxios(ctx, next){
 			next();
 		})
 		.catch(function(err){
+			console.log(err);
+		})
+}
+
+function loadPicturesFetch(ctx, next) {
+	fetch('/api/pictures')
+		.then(function(res) {
+			return res.json();
+		})
+		.then(function(pictures) {
+			ctx.pictures = pictures;
+			console.log('Callback con Fetch');
+			next();
+		})
+		.catch(function(err) {
 			console.log(err);
 		})
 }
