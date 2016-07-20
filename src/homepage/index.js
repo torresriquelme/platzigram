@@ -7,7 +7,7 @@ var header = require('../header');
 var axios = require('axios');
 
 //Define la ruta /signup de la pagina
-page('/', header, loadPicturesFetch, function(ctx, next){
+page('/', header, asyncLoad, function(ctx, next){
 	title('Platzigram');
 	var main = document.getElementById('main-container');
 	
@@ -42,6 +42,7 @@ function loadPicturesAxios(ctx, next){
 		})
 }
 
+//La misma funcion con el codigo fetch
 function loadPicturesFetch(ctx, next) {
 	fetch('/api/pictures')
 		.then(function(res) {
@@ -55,4 +56,14 @@ function loadPicturesFetch(ctx, next) {
 		.catch(function(err) {
 			console.log(err);
 		})
+}
+
+//La funcion con el Fetch pero ejecutada con un try catch y async
+async function asyncLoad(ctx, next) {
+	try{
+		ctx.pictures = await fetch('/api/pictures').then(res => res.json())
+		next();
+	}catch(err){
+		return console.log(err);
+	}
 }
