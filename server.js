@@ -56,7 +56,8 @@ app.get('/api/pictures', function(req, res){
 		}
 	];
 	
-	res.send(pictures);
+	setTimeout(() => res.send(pictures), 2000)
+	//res.send(pictures);
 	
 });
 
@@ -101,7 +102,8 @@ app.get('/api/user/:username', function(req, res){
 			}
 		]
 	}
-	res.send(user);
+
+	res.send(user)
 })
 
 app.get('/:username', function (req, res){
