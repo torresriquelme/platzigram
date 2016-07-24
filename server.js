@@ -56,7 +56,7 @@ app.get('/api/pictures', function(req, res){
 		}
 	];
 	
-	setTimeout(() => res.send(pictures), 2000)
+	setTimeout(() => res.send(pictures), 200)
 	//res.send(pictures);
 	
 });
@@ -107,6 +107,10 @@ app.get('/api/user/:username', function(req, res){
 })
 
 app.get('/:username', function (req, res){
+	res.render('index', { title: `Platzigram - ${req.params.username}`})
+})
+
+app.get('/:username/:id', function (req, res){
 	res.render('index', { title: `Platzigram - ${req.params.username}`})
 })
 
